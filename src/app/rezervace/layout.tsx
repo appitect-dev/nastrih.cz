@@ -72,8 +72,8 @@ function BookingLayoutContent({ children }: BookingLayoutContentProps) {
   const currentStepIndex = steps.findIndex(step => step.href === pathname);
 
   return (
-    <div className="min-h-screen" data-booking-page="true">
-      <nav className="border-b border-gray-200 bg-white">
+    <div className="min-h-screen flex flex-col" style={{ backgroundColor: theme.backgroundColor }}>
+      <nav className="border-b" style={{ borderColor: theme.inputStyle.borderColor }}>
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="flex justify-between h-16">
             <div className="flex">
@@ -88,11 +88,17 @@ function BookingLayoutContent({ children }: BookingLayoutContentProps) {
                       href={step.href}
                       className={`inline-flex items-center px-1 pt-1 text-sm font-medium
                         ${isCurrent 
-                          ? 'border-b-2 border-amber-500 text-gray-900'
+                          ? 'border-b-2 text-gray-900'
                           : isCompleted
-                            ? 'text-gray-500 hover:text-gray-700 hover:border-gray-300'
-                            : 'text-gray-400 cursor-not-allowed'
+                            ? 'hover:border-gray-300'
+                            : 'cursor-not-allowed'
                         }`}
+                      style={{
+                        borderColor: isCurrent ? theme.primaryColor : 'transparent',
+                        color: isCurrent ? theme.textColor : 
+                               isCompleted ? theme.textColor : 
+                               `${theme.textColor}80`
+                      }}
                       onClick={e => {
                         if (!isCompleted && !isCurrent) {
                           e.preventDefault();
@@ -101,7 +107,7 @@ function BookingLayoutContent({ children }: BookingLayoutContentProps) {
                     >
                       <span className="flex items-center">
                         {isCompleted && (
-                          <CheckIcon className="w-5 h-5 mr-2 text-amber-500" />
+                          <CheckIcon className="w-5 h-5 mr-2" style={{ color: theme.primaryColor }} />
                         )}
                         {step.label}
                       </span>
@@ -114,7 +120,7 @@ function BookingLayoutContent({ children }: BookingLayoutContentProps) {
         </div>
       </nav>
 
-      <main className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
+      <main className="flex-1 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
         {children}
       </main>
 
@@ -124,7 +130,11 @@ function BookingLayoutContent({ children }: BookingLayoutContentProps) {
         ) : (
           <button
             onClick={() => setIsCustomizing(true)}
-            className="fixed bottom-4 right-4 bg-amber-600 text-white px-4 py-2 rounded-lg shadow-lg hover:bg-amber-700 transition-colors"
+            className="fixed bottom-4 right-4 text-white px-4 py-2 shadow-lg hover:bg-amber-700 transition-colors"
+            style={{ 
+              backgroundColor: theme.primaryColor,
+              borderRadius: theme.borderRadius
+            }}
           >
             <SwatchIcon className="w-5 h-5" />
           </button>

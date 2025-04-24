@@ -86,8 +86,7 @@ export default function ThemeCustomizer({ isOpen, onClose }: ThemeCustomizerProp
         { label: 'Small', value: '0.25rem' },
         { label: 'Medium', value: '0.5rem' },
         { label: 'Large', value: '0.75rem' },
-        { label: 'Extra Large', value: '1rem' },
-        { label: 'Full', value: '9999px' },
+        { label: 'Extra Large', value: '1rem' }
       ]
     },
     {
@@ -145,8 +144,9 @@ export default function ThemeCustomizer({ isOpen, onClose }: ThemeCustomizerProp
       key: 'fontSize.base',
       options: [
         { label: 'Small', value: '0.875rem' },
-        { label: 'Medium', value: '1rem' },
-        { label: 'Large', value: '1.125rem' },
+        { label: 'Normal', value: '1rem' },
+        { label: 'Medium', value: '1.125rem' },
+        { label: 'Large', value: '1.25rem' }
       ]
     }
   ] as const;
@@ -156,7 +156,6 @@ export default function ThemeCustomizer({ isOpen, onClose }: ThemeCustomizerProp
       const newTheme = { ...prev };
       if (key.includes('.')) {
         const [parent, child] = key.split('.');
-        const parentKey = parent as keyof typeof theme;
         
         if (parent === 'buttonStyle') {
           newTheme.buttonStyle = {
@@ -169,10 +168,21 @@ export default function ThemeCustomizer({ isOpen, onClose }: ThemeCustomizerProp
             [child]: value
           };
         } else if (parent === 'fontSize') {
-          newTheme.fontSize = {
-            ...theme.fontSize,
-            [child]: value
+          // Update all font sizes proportionally
+          const sizes = {
+            small: '0.875rem',
+            base: '1rem',
+            large: '1.125rem'
           };
+          
+          if (child === 'base') {
+            const baseSize = parseFloat(value);
+            newTheme.fontSize = {
+              small: `${(baseSize * 0.875).toFixed(3)}rem`,
+              base: value,
+              large: `${(baseSize * 1.125).toFixed(3)}rem`
+            };
+          }
         } else if (parent === 'fontWeight') {
           newTheme.fontWeight = {
             ...theme.fontWeight,

@@ -30,9 +30,9 @@ export default function ServicesPage() {
     <div className="max-w-3xl mx-auto p-6">
       {/* Barbershop Header */}
       <div className="text-center mb-12">
-        <h1 className="text-4xl font-bold mb-2" style={{ color: theme.textColor }}>The Barber House</h1>
-        <p className="text-lg text-gray-600">Vinohradská 1233/22, Praha 2</p>
-        <div className="flex items-center justify-center gap-2 mt-2 text-gray-500">
+        <h1 className="text-4xl font-bold mb-2">The Barber House</h1>
+        <p className="text-lg" style={{ color: theme.textColor }}>Vinohradská 1233/22, Praha 2</p>
+        <div className="flex items-center justify-center gap-2 mt-2" style={{ color: theme.textColor }}>
           <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
             <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M5 3v4M3 5h4M6 17v4m-2-2h4m5-16l2.286 6.857L21 12l-5.714 2.143L13 21l-2.286-6.857L5 12l5.714-2.143L13 3z" />
           </svg>
@@ -42,7 +42,10 @@ export default function ServicesPage() {
       </div>
 
       {/* Service Selection */}
-      <div className="bg-white rounded-2xl shadow-sm border border-gray-100 p-8">
+      <div className="shadow-sm border p-8" style={{ 
+        borderColor: theme.inputStyle.borderColor,
+        borderRadius: theme.borderRadius
+      }}>
         <ServiceSelector />
       </div>
 
@@ -50,8 +53,11 @@ export default function ServicesPage() {
       <div className="mt-8 flex justify-end">
         <button
           onClick={handleContinue}
-          className="text-white px-8 py-3 rounded-xl font-bold transition-colors text-lg flex items-center gap-2 hover:brightness-90"
-          style={{ backgroundColor: theme.primaryColor }}
+          className="text-white px-8 py-3 font-bold transition-colors text-lg flex items-center gap-2 hover:brightness-90"
+          style={{ 
+            backgroundColor: theme.primaryColor,
+            borderRadius: theme.borderRadius
+          }}
         >
           <span>Pokračovat</span>
           <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">

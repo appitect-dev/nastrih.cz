@@ -30,15 +30,35 @@ export default function ThemeProvider({ children }: { children: React.ReactNode 
           background-color: var(--background-color);
           color: var(--text-color);
           font-family: var(--font-family);
+          font-size: var(--font-size-base);
         }
 
-        [data-booking-page="true"] h1,
-        [data-booking-page="true"] h2,
-        [data-booking-page="true"] h3,
-        [data-booking-page="true"] h4,
-        [data-booking-page="true"] h5,
-        [data-booking-page="true"] h6 {
+        [data-booking-page="true"] h1 {
           font-family: var(--heading-font-family);
+          font-size: calc(var(--font-size-base) * 2);
+        }
+
+        [data-booking-page="true"] h2 {
+          font-family: var(--heading-font-family);
+          font-size: calc(var(--font-size-base) * 1.5);
+        }
+
+        [data-booking-page="true"] h3 {
+          font-family: var(--heading-font-family);
+          font-size: calc(var(--font-size-base) * 1.25);
+        }
+
+        [data-booking-page="true"] .text-sm,
+        [data-booking-page="true"] small {
+          font-size: var(--font-size-small);
+        }
+
+        [data-booking-page="true"] .text-base {
+          font-size: var(--font-size-base);
+        }
+
+        [data-booking-page="true"] .text-lg {
+          font-size: var(--font-size-large);
         }
 
         /* Common elements within booking pages */
@@ -72,13 +92,12 @@ export default function ThemeProvider({ children }: { children: React.ReactNode 
         /* Button styles */
         [data-booking-page="true"] button:not([data-theme-exclude="true"]) {
           transition: all 0.2s ease-in-out;
+          font-size: var(--font-size-base);
         }
 
         [data-booking-page="true"] button:not([data-theme-exclude="true"]):hover {
-          ${theme.buttonStyle.hoverEffect === 'brightness' 
-            ? 'filter: brightness(1.1);' 
-            : 'opacity: 0.9;'
-          }
+          filter: ${theme.buttonStyle.hoverEffect === 'brightness' ? 'brightness(1.1)' : 'none'};
+          opacity: ${theme.buttonStyle.hoverEffect === 'opacity' ? '0.9' : '1'};
         }
 
         /* Form element styles */
@@ -89,17 +108,7 @@ export default function ThemeProvider({ children }: { children: React.ReactNode 
           border-color: ${theme.inputStyle.borderColor};
           padding: ${theme.inputStyle.padding};
           color: var(--text-color);
-        }
-
-        /* Font sizes */
-        [data-booking-page="true"] .text-small {
-          font-size: var(--font-size-small);
-        }
-        [data-booking-page="true"] .text-base {
           font-size: var(--font-size-base);
-        }
-        [data-booking-page="true"] .text-large {
-          font-size: var(--font-size-large);
         }
 
         /* Preserve circular elements */

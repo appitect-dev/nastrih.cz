@@ -28,9 +28,12 @@ export default function SummaryPage() {
 
   return (
     <div className="max-w-2xl mx-auto">
-      <h1 className="text-2xl font-bold mb-8" style={{ color: theme.textColor }}>Dokončení rezervace</h1>
+      <h1 className="text-2xl font-bold mb-8">Dokončení rezervace</h1>
       
-      <div className="bg-white rounded-2xl shadow-sm border border-gray-100 p-8">
+      <div className="shadow-sm border p-8" style={{ 
+        borderColor: theme.inputStyle.borderColor,
+        borderRadius: theme.borderRadius
+      }}>
         <UserInfoForm onSubmit={handleSubmit} />
       </div>
     </div>

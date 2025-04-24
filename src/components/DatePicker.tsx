@@ -1,23 +1,25 @@
-'use client';
+"use client";
 
-import { useState } from 'react';
+import { useState } from "react";
+import { useBookingTheme } from "@/contexts/BookingThemeContext";
 
 interface DatePickerProps {
   onDateSelect: (date: string) => void;
 }
 
 export default function DatePicker({ onDateSelect }: DatePickerProps) {
-  const [selectedDate, setSelectedDate] = useState('');
+  const [selectedDate, setSelectedDate] = useState("");
+  const { theme } = useBookingTheme();
 
   // Get tomorrow's date as minimum selectable date
   const tomorrow = new Date();
   tomorrow.setDate(tomorrow.getDate() + 1);
-  const minDate = tomorrow.toISOString().split('T')[0];
+  const minDate = tomorrow.toISOString().split("T")[0];
 
   // Get date 2 months from now as maximum selectable date
   const twoMonthsFromNow = new Date();
   twoMonthsFromNow.setMonth(twoMonthsFromNow.getMonth() + 2);
-  const maxDate = twoMonthsFromNow.toISOString().split('T')[0];
+  const maxDate = twoMonthsFromNow.toISOString().split("T")[0];
 
   const handleDateChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     const date = e.target.value;
@@ -27,7 +29,16 @@ export default function DatePicker({ onDateSelect }: DatePickerProps) {
 
   return (
     <div className="space-y-4">
-      <h2 className="text-2xl font-bold text-gray-800">Vyberte datum</h2>
+      <h2
+        style={{
+          color: theme.textColor,
+          fontSize: `calc(${theme.fontSize.base} * 1.5)`,
+          fontWeight: theme.fontWeight.bold,
+          fontFamily: theme.fontFamily,
+        }}
+      >
+        Vyberte datum
+      </h2>
       <div className="relative">
         <input
           type="date"
@@ -35,20 +46,35 @@ export default function DatePicker({ onDateSelect }: DatePickerProps) {
           onChange={handleDateChange}
           min={minDate}
           max={maxDate}
-          className="w-full px-4 py-3 rounded-xl border-2 border-gray-200 focus:border-blue-600 focus:ring-2 focus:ring-blue-100 outline-none transition-all text-gray-800 font-medium"
+          className="w-full px-4 py-3 border-2 outline-none transition-all"
+          style={{
+            borderColor: theme.inputStyle.borderColor,
+            backgroundColor: theme.backgroundColor,
+            color: theme.textColor,
+            borderRadius: theme.borderRadius,
+            fontSize: theme.fontSize.base,
+            fontFamily: theme.fontFamily,
+          }}
           required
         />
       </div>
       {selectedDate && (
-        <p className="text-sm text-gray-600">
-          Vybraný termín: {new Date(selectedDate).toLocaleDateString('cs-CZ', {
-            weekday: 'long',
-            year: 'numeric',
-            month: 'long',
-            day: 'numeric'
+        <p
+          style={{
+            color: theme.textColor,
+            fontSize: theme.fontSize.small,
+            fontFamily: theme.fontFamily,
+          }}
+        >
+          Vybraný termín:{" "}
+          {new Date(selectedDate).toLocaleDateString("cs-CZ", {
+            weekday: "long",
+            year: "numeric",
+            month: "long",
+            day: "numeric",
           })}
         </p>
       )}
     </div>
   );
-} 
+}
