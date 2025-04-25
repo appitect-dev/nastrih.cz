@@ -1,33 +1,19 @@
 {
-  "name": "nastrih.cz",
+  "name": "nastrih-monorepo",
   "version": "1.0.0",
   "private": true,
   "workspaces": [
     "front",
-    "back",
     "docs"
   ],
-  "engines": {
-    "node": ">=20.5.1",
-    "npm": ">=10.2.4"
-  },
   "scripts": {
-    "dev": "npm-run-all --parallel dev:*",
-    "dev:front": "cd front && npm run dev",
-    "dev:docs": "cd docs && npm run start",
-    "build": "npm-run-all --parallel build:*",
-    "build:front": "cd front && npm run build",
-    "build:docs": "cd docs && npm run build",
-    "start": "npm-run-all --parallel start:*",
-    "start:front": "cd front && npm run start",
-    "start:docs": "cd docs && npm run serve"
+    "front": "cd front && npm run dev",
+    "docs": "cd docs && npm run start",
+    "back": "cd back && ./mvnw spring-boot:run",
+    "dev": "concurrently \"npm run front\" \"npm run docs\" \"npm run back\" --names \"FRONT,DOCS,BACK\" --prefix-colors \"cyan,yellow,magenta\"",
+    "install:all": "npm install && cd front && npm install && cd ../docs && npm install"
   },
   "devDependencies": {
-    "npm-run-all": "^4.1.5"
-  },
-  "dependencies": {
-    "ajv": "^8.12.0",
-    "ajv-keywords": "^5.1.0",
-    "schema-utils": "^4.2.0"
+    "concurrently": "^8.2.2"
   }
 }

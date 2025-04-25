@@ -1,17 +1,19 @@
 # See https://help.github.com/articles/ignoring-files/ for more about ignoring files.
 
 # dependencies
-node_modules
+node_modules/
 .pnp
 .pnp.js
 .yarn/install-state.gz
 
 # testing
-coverage
+coverage/
 
 # next.js
 .next/
 out/
+build/
+dist/
 
 # production
 build/
@@ -27,6 +29,9 @@ yarn-error.log*
 
 # local env files
 .env*.local
+.env*.development.local
+.env*.test.local
+.env*.production.local
 
 # vercel
 .vercel
@@ -39,10 +44,38 @@ next-env.d.ts
 docs/build/
 
 # IDEs and editors
-.idea
-.vscode
+.idea/
+.vscode/
+*.iml
+*.iws
+*.ipr
 *.swp
 *.swo
 
 # OS
 Thumbs.db
+
+# Spring Boot
+back/target/
+back/!.mvn/wrapper/maven-wrapper.jar
+back/!**/src/main/**/target/
+back/!**/src/test/**/target/
+
+# Compiled class files
+*.class
+
+# Log files
+*.log
+
+# Package files
+*.jar
+*.war
+*.nar
+*.ear
+*.zip
+*.tar.gz
+*.rar
+
+# Virtual machine crash logs
+hs_err_pid*
+replay_pid*
