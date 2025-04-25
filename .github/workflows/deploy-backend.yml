@@ -23,6 +23,17 @@ jobs:
         working-directory: ./back
         run: ./mvnw clean package -DskipTests
         
+      - name: Set up Docker Buildx
+        uses: docker/setup-buildx-action@v3
+        
+      - name: Build and push Docker image
+        uses: docker/build-push-action@v5
+        with:
+          context: ./back
+          push: false
+          load: true
+          tags: nastrih-backend:latest
+        
       - name: Deploy to Render
         env:
           deploy_url: ${{ secrets.RENDER_DEPLOY_HOOK_URL }}
