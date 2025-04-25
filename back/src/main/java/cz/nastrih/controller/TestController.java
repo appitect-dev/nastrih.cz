@@ -22,6 +22,6 @@ public class TestController {
         description = "Success"
     )
     public String helloWorld() {
-        return "Hello from Nastrih.cz API!";
+        return "Greetings from Nastrih.cz API!";
     }
 } 
