@@ -4,6 +4,8 @@ WORKDIR /app
 
 COPY target/*.jar app.jar
 
-EXPOSE 8080
+# The port will be provided by Render
+ENV PORT=8080
+EXPOSE ${PORT}
 
-ENTRYPOINT ["java", "-jar", "app.jar"] 
+CMD ["sh", "-c", "java -jar app.jar --server.port=${PORT}"] 
