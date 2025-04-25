@@ -18,21 +18,39 @@ const sidebars = {
   tutorialSidebar: [
     {
       type: 'doc',
-      id: 'guides/README',
+      id: 'intro',
       label: 'Introduction',
     },
     {
-      type: 'doc',
-      id: 'guides/getting-started',
-      label: 'Getting Started',
+      type: 'category',
+      label: 'Frontend',
+      items: [
+        'frontend/overview',
+      ],
     },
     {
       type: 'category',
-      label: 'Features',
+      label: 'Backend',
       items: [
+        'backend/overview',
+      ],
+    },
+    {
+      type: 'category',
+      label: 'Guides',
+      items: [
+        'guides/getting-started',
         'guides/booking-flow',
         'guides/theme-system',
+        'guides/components',
         'guides/admin-panel',
+      ],
+    },
+    {
+      type: 'category',
+      label: 'Deployment',
+      items: [
+        'deployment/ci-cd',
       ],
     },
   ],
