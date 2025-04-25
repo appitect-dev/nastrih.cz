@@ -10,14 +10,14 @@ const config = {
   favicon: 'img/favicon.ico',
 
   // Set the production url of your site here
-  url: 'https://docs.nastrih.cz',
+  url: 'https://appitect-dev.github.io',
   // Set the /<baseUrl>/ pathname under which your site is served
-  // For GitHub pages deployment, it is often '/<projectName>/'
-  baseUrl: '/',
+  baseUrl: '/nastrih.cz/',
 
   // GitHub pages deployment config.
   organizationName: 'appitect-dev',
   projectName: 'nastrih.cz',
+  trailingSlash: false,
 
   onBrokenLinks: 'warn',
   onBrokenMarkdownLinks: 'warn',
