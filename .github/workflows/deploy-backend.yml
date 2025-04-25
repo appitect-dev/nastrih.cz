@@ -1,0 +1,49 @@
+name: Deploy Backend
+
+on:
+  push:
+    branches: [ main ]
+    paths:
+      - 'back/**'
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      
+      - name: Set up JDK
+        uses: actions/setup-java@v4
+        with:
+          java-version: '21'
+          distribution: 'temurin'
+          cache: 'maven'
+          
+      - name: Build backend
+        working-directory: ./back
+        run: ./mvnw clean package -DskipTests
+        
+      - name: Install doctl
+        uses: digitalocean/action-doctl@v2
+        with:
+          token: ${{ secrets.DIGITALOCEAN_ACCESS_TOKEN }}
+          
+      - name: Build container image
+        working-directory: ./back
+        run: docker build -t registry.digitalocean.com/nastrih/backend:$(echo $GITHUB_SHA | head -c7) .
+        
+      - name: Log in to DigitalOcean Container Registry
+        run: doctl registry login --expiry-seconds 600
+        
+      - name: Push image to DigitalOcean Container Registry
+        run: docker push registry.digitalocean.com/nastrih/backend:$(echo $GITHUB_SHA | head -c7)
+        
+      - name: Update deployment file
+        run: |
+          TAG=$(echo $GITHUB_SHA | head -c7)
+          sed -i 's|<IMAGE>|registry.digitalocean.com/nastrih/backend:'${TAG}'|' $GITHUB_WORKSPACE/back/k8s/deployment.yml
+          
+      - name: Deploy to DigitalOcean Kubernetes
+        run: |
+          doctl kubernetes cluster kubeconfig save --expiry-seconds 600 ${{ secrets.DIGITALOCEAN_CLUSTER_ID }}
+          kubectl apply -f $GITHUB_WORKSPACE/back/k8s/deployment.yml 

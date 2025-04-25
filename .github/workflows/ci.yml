@@ -1,0 +1,70 @@
+name: CI
+
+on:
+  push:
+    branches: [ main ]
+  pull_request:
+    branches: [ main ]
+
+jobs:
+  frontend-checks:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: '20.5.1'
+          cache: 'npm'
+          
+      - name: Install dependencies
+        working-directory: ./front
+        run: npm ci
+        
+      - name: Run linter
+        working-directory: ./front
+        run: npm run lint
+        
+      - name: Run tests
+        working-directory: ./front
+        run: npm run test
+        
+      - name: Build frontend
+        working-directory: ./front
+        run: npm run build
+
+  docs-checks:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: '20.5.1'
+          cache: 'npm'
+          
+      - name: Install dependencies
+        working-directory: ./docs
+        run: npm ci
+        
+      - name: Build documentation
+        working-directory: ./docs
+        run: npm run build
+
+  backend-checks:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      
+      - name: Set up JDK
+        uses: actions/setup-java@v4
+        with:
+          java-version: '21'
+          distribution: 'temurin'
+          cache: 'maven'
+          
+      - name: Build and test backend
+        working-directory: ./back
+        run: ./mvnw clean verify 
