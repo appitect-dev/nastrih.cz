@@ -1,60 +1,23 @@
 # Nastrih.cz Documentation
 
-Welcome to the documentation for Nastrih.cz, a modern barbershop booking system. This documentation provides comprehensive information about the project's architecture, components, and features.
+Welcome to the Nastrih.cz documentation! This guide will help you understand and work with the Nastrih.cz barbershop booking system.
 
-## Project Overview
+## Getting Started
 
-Nastrih.cz is a booking system for barbershops, built with:
+To get started with Nastrih.cz, check out our [Getting Started Guide](getting-started.md).
 
-- Next.js 14 (App Router)
-- TypeScript
-- Tailwind CSS
-- Next-Auth for authentication
-- Custom theming system
+## Main Topics
 
-The system provides:
-- Online booking interface (`/rezervace`)
-- Admin dashboard (`/admin`)
-- Customizable booking theme
-- User authentication
+- [Booking Flow](booking-flow.md) - Learn about the customer booking process
+- [Theme System](theme-system.md) - Customize the look and feel of your site
+- [Components](components.md) - Overview of available UI components
+- [Admin Panel](admin-panel.md) - Manage your barbershop settings
 
-## Core Features
+## Development
 
-### Booking System (`/rezervace`)
-- Step-by-step booking process
-- Service selection
-- Appointment scheduling
-- Customer information collection
-- Theme customization support
+This project is built using:
+- Next.js for the frontend
+- Spring Boot for the backend
+- Docusaurus for documentation
 
-### Admin Panel (`/admin`)
-- Protected admin interface
-- Booking management
-- Service configuration
-- System settings
-
-### Theme System
-- Customizable color schemes
-- Live theme preview
-- Theme persistence
-- Component-level theming
-
-## Project Structure
-
-```
-nastrih.cz/
-├── src/
-│   ├── app/                 # Next.js app router pages
-│   │   ├── rezervace/      # Booking system routes
-│   │   └── admin/          # Admin panel routes
-│   ├── components/         # React components
-│   ├── contexts/          # React contexts (including theme)
-│   └── lib/               # Utility functions
-```
-
-## Quick Links
-
-- [Getting Started](./getting-started.md)
-- [Theme System](./theme-system.md)
-- [Booking Flow](./booking-flow.md)
-- [Admin Panel](./admin-panel.md) 
+For development setup and contribution guidelines, see our [Getting Started](getting-started.md) guide. 
