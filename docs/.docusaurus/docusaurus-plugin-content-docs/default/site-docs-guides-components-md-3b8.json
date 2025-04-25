@@ -1,0 +1,15 @@
+{
+  "id": "guides/components",
+  "title": "Components Documentation",
+  "description": "This document provides detailed information about the reusable components in the Nastrih.cz project.",
+  "source": "@site/docs/guides/components.md",
+  "sourceDirName": "guides",
+  "slug": "/guides/components",
+  "permalink": "/docs/guides/components",
+  "draft": false,
+  "unlisted": false,
+  "editUrl": "https://github.com/yourusername/nastrih.cz/tree/main/docs/docs/guides/components.md",
+  "tags": [],
+  "version": "current",
+  "frontMatter": {}
+}

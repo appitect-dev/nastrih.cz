@@ -1,0 +1,24 @@
+{
+  "id": "guides/getting-started",
+  "title": "Getting Started",
+  "description": "This guide will help you set up and run the Nastrih.cz barbershop booking system locally.",
+  "source": "@site/docs/guides/getting-started.md",
+  "sourceDirName": "guides",
+  "slug": "/guides/getting-started",
+  "permalink": "/docs/guides/getting-started",
+  "draft": false,
+  "unlisted": false,
+  "editUrl": "https://github.com/yourusername/nastrih.cz/tree/main/docs/docs/guides/getting-started.md",
+  "tags": [],
+  "version": "current",
+  "frontMatter": {},
+  "sidebar": "tutorialSidebar",
+  "previous": {
+    "title": "Introduction",
+    "permalink": "/docs/guides/"
+  },
+  "next": {
+    "title": "Booking Flow Documentation",
+    "permalink": "/docs/guides/booking-flow"
+  }
+}

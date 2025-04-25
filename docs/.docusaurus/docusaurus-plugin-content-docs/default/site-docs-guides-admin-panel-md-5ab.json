@@ -1,0 +1,20 @@
+{
+  "id": "guides/admin-panel",
+  "title": "Admin Panel Documentation",
+  "description": "This document provides comprehensive information about the admin panel in the Nastrih.cz booking system.",
+  "source": "@site/docs/guides/admin-panel.md",
+  "sourceDirName": "guides",
+  "slug": "/guides/admin-panel",
+  "permalink": "/docs/guides/admin-panel",
+  "draft": false,
+  "unlisted": false,
+  "editUrl": "https://github.com/yourusername/nastrih.cz/tree/main/docs/docs/guides/admin-panel.md",
+  "tags": [],
+  "version": "current",
+  "frontMatter": {},
+  "sidebar": "tutorialSidebar",
+  "previous": {
+    "title": "Theme System Documentation",
+    "permalink": "/docs/guides/theme-system"
+  }
+}

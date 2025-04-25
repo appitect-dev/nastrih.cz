@@ -1,37 +1,33 @@
 {
   "name": "nastrih.cz",
-  "version": "0.1.0",
+  "version": "1.0.0",
   "private": true,
-  "scripts": {
-    "dev": "next dev",
-    "build": "next build",
-    "start": "next start",
-    "lint": "next lint"
+  "workspaces": [
+    "front",
+    "back",
+    "docs"
+  ],
+  "engines": {
+    "node": ">=20.5.1",
+    "npm": ">=10.2.4"
   },
-  "dependencies": {
-    "@fontsource/inter": "^5.2.5",
-    "@fontsource/outfit": "^5.2.5",
-    "@headlessui/react": "^2.2.2",
-    "@heroicons/react": "^2.2.0",
-    "clsx": "^2.1.1",
-    "date-fns": "^4.1.0",
-    "framer-motion": "^12.7.4",
-    "next": "14.2.18",
-    "next-auth": "^4.24.11",
-    "react": "^18",
-    "react-colorful": "^5.6.1",
-    "react-dom": "^18",
-    "recharts": "^2.15.3",
-    "tailwind-merge": "^3.2.0"
+  "scripts": {
+    "dev": "npm-run-all --parallel dev:*",
+    "dev:front": "cd front && npm run dev",
+    "dev:docs": "cd docs && npm run start",
+    "build": "npm-run-all --parallel build:*",
+    "build:front": "cd front && npm run build",
+    "build:docs": "cd docs && npm run build",
+    "start": "npm-run-all --parallel start:*",
+    "start:front": "cd front && npm run start",
+    "start:docs": "cd docs && npm run serve"
   },
   "devDependencies": {
-    "@types/node": "^20",
-    "@types/react": "^18",
-    "@types/react-dom": "^18",
-    "eslint": "^8",
-    "eslint-config-next": "14.2.18",
-    "postcss": "^8",
-    "tailwindcss": "^3.4.1",
-    "typescript": "^5"
+    "npm-run-all": "^4.1.5"
+  },
+  "dependencies": {
+    "ajv": "^8.12.0",
+    "ajv-keywords": "^5.1.0",
+    "schema-utils": "^4.2.0"
   }
 }
