@@ -1,0 +1,20 @@
+{
+  "id": "deployment/ci-cd",
+  "title": "CI/CD Pipeline",
+  "description": "Nastrih.cz uses GitHub Actions for continuous integration and deployment. The project is set up with automated workflows for testing, building, and deploying all components.",
+  "source": "@site/docs/deployment/ci-cd.md",
+  "sourceDirName": "deployment",
+  "slug": "/deployment/ci-cd",
+  "permalink": "/nastrih.cz/docs/deployment/ci-cd",
+  "draft": false,
+  "unlisted": false,
+  "editUrl": "https://github.com/appitect-dev/nastrih.cz/tree/main/docs/docs/deployment/ci-cd.md",
+  "tags": [],
+  "version": "current",
+  "frontMatter": {},
+  "sidebar": "tutorialSidebar",
+  "previous": {
+    "title": "Admin Panel Documentation",
+    "permalink": "/nastrih.cz/docs/guides/admin-panel"
+  }
+}

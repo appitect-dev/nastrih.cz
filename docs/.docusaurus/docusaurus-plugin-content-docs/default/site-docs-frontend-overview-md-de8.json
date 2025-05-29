@@ -1,0 +1,24 @@
+{
+  "id": "frontend/overview",
+  "title": "Frontend Overview",
+  "description": "The Nastrih.cz frontend is built using Next.js 14 with the App Router, providing a modern and performant user interface for the barbershop booking system.",
+  "source": "@site/docs/frontend/overview.md",
+  "sourceDirName": "frontend",
+  "slug": "/frontend/overview",
+  "permalink": "/nastrih.cz/docs/frontend/overview",
+  "draft": false,
+  "unlisted": false,
+  "editUrl": "https://github.com/appitect-dev/nastrih.cz/tree/main/docs/docs/frontend/overview.md",
+  "tags": [],
+  "version": "current",
+  "frontMatter": {},
+  "sidebar": "tutorialSidebar",
+  "previous": {
+    "title": "Introduction",
+    "permalink": "/nastrih.cz/docs/intro"
+  },
+  "next": {
+    "title": "Backend Overview",
+    "permalink": "/nastrih.cz/docs/backend/overview"
+  }
+}

@@ -5,13 +5,14 @@
  */
 export default {
   "title": "Nastrih.cz Documentation",
-  "tagline": "Modern barbershop booking system",
+  "tagline": "Documentation for Nastrih.cz barbershop system",
   "favicon": "img/favicon.ico",
-  "url": "https://docs.nastrih.cz",
-  "baseUrl": "/",
-  "organizationName": "nastrih",
+  "url": "https://appitect-dev.github.io",
+  "baseUrl": "/nastrih.cz/",
+  "organizationName": "appitect-dev",
   "projectName": "nastrih.cz",
-  "onBrokenLinks": "throw",
+  "trailingSlash": false,
+  "onBrokenLinks": "warn",
   "onBrokenMarkdownLinks": "warn",
   "i18n": {
     "defaultLocale": "cs",
@@ -26,11 +27,12 @@ export default {
       "classic",
       {
         "docs": {
-          "sidebarPath": "./sidebars.js",
-          "editUrl": "https://github.com/yourusername/nastrih.cz/tree/main/docs/"
+          "sidebarPath": "/Users/adambardzak/Desktop/business/nastrih.cz/docs/sidebars.js",
+          "editUrl": "https://github.com/appitect-dev/nastrih.cz/tree/main/docs/"
         },
+        "blog": false,
         "theme": {
-          "customCss": "./src/css/custom.css"
+          "customCss": "/Users/adambardzak/Desktop/business/nastrih.cz/docs/src/css/custom.css"
         }
       }
     ]
@@ -51,7 +53,7 @@ export default {
           "label": "Documentation"
         },
         {
-          "href": "https://github.com/yourusername/nastrih.cz",
+          "href": "https://github.com/appitect-dev/nastrih.cz",
           "label": "GitHub",
           "position": "right"
         }
@@ -62,32 +64,11 @@ export default {
       "style": "dark",
       "links": [
         {
-          "title": "Documentation",
+          "title": "Docs",
           "items": [
-            {
-              "label": "Introduction",
-              "to": "/docs/guides/README"
-            },
             {
               "label": "Getting Started",
               "to": "/docs/guides/getting-started"
-            },
-            {
-              "label": "Booking Flow",
-              "to": "/docs/guides/booking-flow"
-            }
-          ]
-        },
-        {
-          "title": "Features",
-          "items": [
-            {
-              "label": "Theme System",
-              "to": "/docs/guides/theme-system"
-            },
-            {
-              "label": "Admin Panel",
-              "to": "/docs/guides/admin-panel"
             }
           ]
         },
@@ -96,7 +77,7 @@ export default {
           "items": [
             {
               "label": "GitHub",
-              "href": "https://github.com/yourusername/nastrih.cz"
+              "href": "https://github.com/appitect-dev/nastrih.cz"
             }
           ]
         }

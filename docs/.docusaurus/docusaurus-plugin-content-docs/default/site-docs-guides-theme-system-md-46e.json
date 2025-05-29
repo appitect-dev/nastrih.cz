@@ -5,20 +5,20 @@
   "source": "@site/docs/guides/theme-system.md",
   "sourceDirName": "guides",
   "slug": "/guides/theme-system",
-  "permalink": "/docs/guides/theme-system",
+  "permalink": "/nastrih.cz/docs/guides/theme-system",
   "draft": false,
   "unlisted": false,
-  "editUrl": "https://github.com/yourusername/nastrih.cz/tree/main/docs/docs/guides/theme-system.md",
+  "editUrl": "https://github.com/appitect-dev/nastrih.cz/tree/main/docs/docs/guides/theme-system.md",
   "tags": [],
   "version": "current",
   "frontMatter": {},
   "sidebar": "tutorialSidebar",
   "previous": {
     "title": "Booking Flow Documentation",
-    "permalink": "/docs/guides/booking-flow"
+    "permalink": "/nastrih.cz/docs/guides/booking-flow"
   },
   "next": {
-    "title": "Admin Panel Documentation",
-    "permalink": "/docs/guides/admin-panel"
+    "title": "Components Documentation",
+    "permalink": "/nastrih.cz/docs/guides/components"
   }
 }

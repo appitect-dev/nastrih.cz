@@ -1,20 +1,15 @@
 {
   "id": "guides/README",
   "title": "Nastrih.cz Documentation",
-  "description": "Welcome to the documentation for Nastrih.cz, a modern barbershop booking system. This documentation provides comprehensive information about the project's architecture, components, and features.",
+  "description": "Welcome to the Nastrih.cz documentation! This guide will help you understand and work with the Nastrih.cz barbershop booking system.",
   "source": "@site/docs/guides/README.md",
   "sourceDirName": "guides",
   "slug": "/guides/",
-  "permalink": "/docs/guides/",
+  "permalink": "/nastrih.cz/docs/guides/",
   "draft": false,
   "unlisted": false,
-  "editUrl": "https://github.com/yourusername/nastrih.cz/tree/main/docs/docs/guides/README.md",
+  "editUrl": "https://github.com/appitect-dev/nastrih.cz/tree/main/docs/docs/guides/README.md",
   "tags": [],
   "version": "current",
-  "frontMatter": {},
-  "sidebar": "tutorialSidebar",
-  "next": {
-    "title": "Getting Started",
-    "permalink": "/docs/guides/getting-started"
-  }
+  "frontMatter": {}
 }

@@ -3,205 +3,154 @@ import ComponentCreator from '@docusaurus/ComponentCreator';
 
 export default [
   {
-    path: '/__docusaurus/debug',
-    component: ComponentCreator('/__docusaurus/debug', '5ff'),
+    path: '/nastrih.cz/__docusaurus/debug',
+    component: ComponentCreator('/nastrih.cz/__docusaurus/debug', '684'),
     exact: true
   },
   {
-    path: '/__docusaurus/debug/config',
-    component: ComponentCreator('/__docusaurus/debug/config', '5ba'),
+    path: '/nastrih.cz/__docusaurus/debug/config',
+    component: ComponentCreator('/nastrih.cz/__docusaurus/debug/config', '79b'),
     exact: true
   },
   {
-    path: '/__docusaurus/debug/content',
-    component: ComponentCreator('/__docusaurus/debug/content', 'a2b'),
+    path: '/nastrih.cz/__docusaurus/debug/content',
+    component: ComponentCreator('/nastrih.cz/__docusaurus/debug/content', '2ec'),
     exact: true
   },
   {
-    path: '/__docusaurus/debug/globalData',
-    component: ComponentCreator('/__docusaurus/debug/globalData', 'c3c'),
+    path: '/nastrih.cz/__docusaurus/debug/globalData',
+    component: ComponentCreator('/nastrih.cz/__docusaurus/debug/globalData', 'db4'),
     exact: true
   },
   {
-    path: '/__docusaurus/debug/metadata',
-    component: ComponentCreator('/__docusaurus/debug/metadata', '156'),
+    path: '/nastrih.cz/__docusaurus/debug/metadata',
+    component: ComponentCreator('/nastrih.cz/__docusaurus/debug/metadata', 'a6d'),
     exact: true
   },
   {
-    path: '/__docusaurus/debug/registry',
-    component: ComponentCreator('/__docusaurus/debug/registry', '88c'),
+    path: '/nastrih.cz/__docusaurus/debug/registry',
+    component: ComponentCreator('/nastrih.cz/__docusaurus/debug/registry', '35f'),
     exact: true
   },
   {
-    path: '/__docusaurus/debug/routes',
-    component: ComponentCreator('/__docusaurus/debug/routes', '000'),
+    path: '/nastrih.cz/__docusaurus/debug/routes',
+    component: ComponentCreator('/nastrih.cz/__docusaurus/debug/routes', '62f'),
     exact: true
   },
   {
-    path: '/blog',
-    component: ComponentCreator('/blog', 'b2f'),
+    path: '/nastrih.cz/markdown-page',
+    component: ComponentCreator('/nastrih.cz/markdown-page', 'e2c'),
     exact: true
   },
   {
-    path: '/blog/archive',
-    component: ComponentCreator('/blog/archive', '182'),
-    exact: true
-  },
-  {
-    path: '/blog/authors',
-    component: ComponentCreator('/blog/authors', '0b7'),
-    exact: true
-  },
-  {
-    path: '/blog/authors/all-sebastien-lorber-articles',
-    component: ComponentCreator('/blog/authors/all-sebastien-lorber-articles', '4a1'),
-    exact: true
-  },
-  {
-    path: '/blog/authors/yangshun',
-    component: ComponentCreator('/blog/authors/yangshun', 'a68'),
-    exact: true
-  },
-  {
-    path: '/blog/first-blog-post',
-    component: ComponentCreator('/blog/first-blog-post', '89a'),
-    exact: true
-  },
-  {
-    path: '/blog/long-blog-post',
-    component: ComponentCreator('/blog/long-blog-post', '9ad'),
-    exact: true
-  },
-  {
-    path: '/blog/mdx-blog-post',
-    component: ComponentCreator('/blog/mdx-blog-post', 'e9f'),
-    exact: true
-  },
-  {
-    path: '/blog/tags',
-    component: ComponentCreator('/blog/tags', '287'),
-    exact: true
-  },
-  {
-    path: '/blog/tags/docusaurus',
-    component: ComponentCreator('/blog/tags/docusaurus', '704'),
-    exact: true
-  },
-  {
-    path: '/blog/tags/facebook',
-    component: ComponentCreator('/blog/tags/facebook', '858'),
-    exact: true
-  },
-  {
-    path: '/blog/tags/hello',
-    component: ComponentCreator('/blog/tags/hello', '299'),
-    exact: true
-  },
-  {
-    path: '/blog/tags/hola',
-    component: ComponentCreator('/blog/tags/hola', '00d'),
-    exact: true
-  },
-  {
-    path: '/blog/welcome',
-    component: ComponentCreator('/blog/welcome', 'd2b'),
-    exact: true
-  },
-  {
-    path: '/markdown-page',
-    component: ComponentCreator('/markdown-page', '3d7'),
-    exact: true
-  },
-  {
-    path: '/docs',
-    component: ComponentCreator('/docs', 'f5d'),
+    path: '/nastrih.cz/docs',
+    component: ComponentCreator('/nastrih.cz/docs', 'c87'),
     routes: [
       {
-        path: '/docs',
-        component: ComponentCreator('/docs', '7ae'),
+        path: '/nastrih.cz/docs',
+        component: ComponentCreator('/nastrih.cz/docs', '186'),
         routes: [
           {
-            path: '/docs',
-            component: ComponentCreator('/docs', 'f7c'),
+            path: '/nastrih.cz/docs',
+            component: ComponentCreator('/nastrih.cz/docs', '98f'),
             routes: [
               {
-                path: '/docs/guides/',
-                component: ComponentCreator('/docs/guides/', '422'),
+                path: '/nastrih.cz/docs/backend/overview',
+                component: ComponentCreator('/nastrih.cz/docs/backend/overview', 'c6f'),
                 exact: true,
                 sidebar: "tutorialSidebar"
               },
               {
-                path: '/docs/guides/admin-panel',
-                component: ComponentCreator('/docs/guides/admin-panel', 'c59'),
+                path: '/nastrih.cz/docs/deployment/ci-cd',
+                component: ComponentCreator('/nastrih.cz/docs/deployment/ci-cd', 'b5f'),
                 exact: true,
                 sidebar: "tutorialSidebar"
               },
               {
-                path: '/docs/guides/booking-flow',
-                component: ComponentCreator('/docs/guides/booking-flow', '73b'),
+                path: '/nastrih.cz/docs/frontend/overview',
+                component: ComponentCreator('/nastrih.cz/docs/frontend/overview', 'd80'),
                 exact: true,
                 sidebar: "tutorialSidebar"
               },
               {
-                path: '/docs/guides/components',
-                component: ComponentCreator('/docs/guides/components', '4c1'),
+                path: '/nastrih.cz/docs/guides',
+                component: ComponentCreator('/nastrih.cz/docs/guides', 'a74'),
                 exact: true
               },
               {
-                path: '/docs/guides/getting-started',
-                component: ComponentCreator('/docs/guides/getting-started', '2d1'),
+                path: '/nastrih.cz/docs/guides/admin-panel',
+                component: ComponentCreator('/nastrih.cz/docs/guides/admin-panel', '3ed'),
                 exact: true,
                 sidebar: "tutorialSidebar"
               },
               {
-                path: '/docs/guides/theme-system',
-                component: ComponentCreator('/docs/guides/theme-system', 'd3c'),
+                path: '/nastrih.cz/docs/guides/booking-flow',
+                component: ComponentCreator('/nastrih.cz/docs/guides/booking-flow', '9d4'),
                 exact: true,
                 sidebar: "tutorialSidebar"
               },
               {
-                path: '/docs/intro',
-                component: ComponentCreator('/docs/intro', '853'),
+                path: '/nastrih.cz/docs/guides/components',
+                component: ComponentCreator('/nastrih.cz/docs/guides/components', 'fdb'),
+                exact: true,
+                sidebar: "tutorialSidebar"
+              },
+              {
+                path: '/nastrih.cz/docs/guides/getting-started',
+                component: ComponentCreator('/nastrih.cz/docs/guides/getting-started', 'bc0'),
+                exact: true,
+                sidebar: "tutorialSidebar"
+              },
+              {
+                path: '/nastrih.cz/docs/guides/theme-system',
+                component: ComponentCreator('/nastrih.cz/docs/guides/theme-system', '81c'),
+                exact: true,
+                sidebar: "tutorialSidebar"
+              },
+              {
+                path: '/nastrih.cz/docs/intro',
+                component: ComponentCreator('/nastrih.cz/docs/intro', '94d'),
+                exact: true,
+                sidebar: "tutorialSidebar"
+              },
+              {
+                path: '/nastrih.cz/docs/tutorial-basics/congratulations',
+                component: ComponentCreator('/nastrih.cz/docs/tutorial-basics/congratulations', '9c9'),
                 exact: true
               },
               {
-                path: '/docs/tutorial-basics/congratulations',
-                component: ComponentCreator('/docs/tutorial-basics/congratulations', '70e'),
+                path: '/nastrih.cz/docs/tutorial-basics/create-a-blog-post',
+                component: ComponentCreator('/nastrih.cz/docs/tutorial-basics/create-a-blog-post', 'ae1'),
                 exact: true
               },
               {
-                path: '/docs/tutorial-basics/create-a-blog-post',
-                component: ComponentCreator('/docs/tutorial-basics/create-a-blog-post', '315'),
+                path: '/nastrih.cz/docs/tutorial-basics/create-a-document',
+                component: ComponentCreator('/nastrih.cz/docs/tutorial-basics/create-a-document', '51a'),
                 exact: true
               },
               {
-                path: '/docs/tutorial-basics/create-a-document',
-                component: ComponentCreator('/docs/tutorial-basics/create-a-document', 'f86'),
+                path: '/nastrih.cz/docs/tutorial-basics/create-a-page',
+                component: ComponentCreator('/nastrih.cz/docs/tutorial-basics/create-a-page', 'f82'),
                 exact: true
               },
               {
-                path: '/docs/tutorial-basics/create-a-page',
-                component: ComponentCreator('/docs/tutorial-basics/create-a-page', '9f6'),
+                path: '/nastrih.cz/docs/tutorial-basics/deploy-your-site',
+                component: ComponentCreator('/nastrih.cz/docs/tutorial-basics/deploy-your-site', 'b83'),
                 exact: true
               },
               {
-                path: '/docs/tutorial-basics/deploy-your-site',
-                component: ComponentCreator('/docs/tutorial-basics/deploy-your-site', 'b91'),
+                path: '/nastrih.cz/docs/tutorial-basics/markdown-features',
+                component: ComponentCreator('/nastrih.cz/docs/tutorial-basics/markdown-features', '464'),
                 exact: true
               },
               {
-                path: '/docs/tutorial-basics/markdown-features',
-                component: ComponentCreator('/docs/tutorial-basics/markdown-features', '272'),
+                path: '/nastrih.cz/docs/tutorial-extras/manage-docs-versions',
+                component: ComponentCreator('/nastrih.cz/docs/tutorial-extras/manage-docs-versions', '3cf'),
                 exact: true
               },
               {
-                path: '/docs/tutorial-extras/manage-docs-versions',
-                component: ComponentCreator('/docs/tutorial-extras/manage-docs-versions', 'a34'),
-                exact: true
-              },
-              {
-                path: '/docs/tutorial-extras/translate-your-site',
-                component: ComponentCreator('/docs/tutorial-extras/translate-your-site', '739'),
+                path: '/nastrih.cz/docs/tutorial-extras/translate-your-site',
+                component: ComponentCreator('/nastrih.cz/docs/tutorial-extras/translate-your-site', 'c66'),
                 exact: true
               }
             ]
@@ -211,8 +160,8 @@ export default [
     ]
   },
   {
-    path: '/',
-    component: ComponentCreator('/', '2e1'),
+    path: '/nastrih.cz/',
+    component: ComponentCreator('/nastrih.cz/', '64a'),
     exact: true
   },
   {

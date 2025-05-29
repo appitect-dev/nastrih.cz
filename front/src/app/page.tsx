@@ -7,35 +7,11 @@ import "@fontsource/inter/500.css";
 import "@fontsource/inter/600.css";
 import "@fontsource/outfit/600.css";
 import "@fontsource/outfit/700.css";
-
-// Animation variants
-const fadeInUp = {
-  initial: { opacity: 0, y: 20 },
-  animate: { opacity: 1, y: 0 },
-  transition: { duration: 0.5 },
-};
-
-const staggerContainer = {
-  animate: {
-    transition: {
-      staggerChildren: 0.1,
-    },
-  },
-};
-
-const draw = {
-  hidden: { pathLength: 0, opacity: 0 },
-  visible: {
-    pathLength: 1,
-    opacity: 1,
-    transition: {
-      pathLength: { duration: 2, ease: "easeInOut" },
-      opacity: { duration: 0.3 },
-    },
-  },
-};
+import Image from "next/image";
+import { useState } from "react";
 
 export default function LandingPage() {
+  const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
   return (
     <div className="min-h-screen bg-white font-inter antialiased">
       {/* Background Gradient with animated noise texture */}
@@ -43,55 +19,117 @@ export default function LandingPage() {
       <div className="fixed inset-0 bg-noise opacity-[0.015] pointer-events-none" />
 
       {/* Navbar */}
-      <nav className="fixed top-0 left-0 right-0 bg-white/70 backdrop-blur-xl z-50 border-b border-gray-100/50">
+      <nav className="sticky top-0 left-0 right-0 z-50 bg-white/80 backdrop-blur-xl shadow-xl rounded-b-2xl border-b border-gray-100/70 transition-all duration-300">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="flex justify-between items-center h-20">
-            <Link
-              href="/"
-              className="text-2xl font-bold font-outfit text-transparent bg-clip-text bg-gradient-to-r from-blue-600 to-blue-800 hover:scale-105 transition-transform"
-            >
-              nastrih.cz
+            {/* Logo */}
+            <Link href="/" className="flex items-center gap-3 group">
+              <Image
+                src="/scissors.svg"
+                alt="Logo"
+                width={40}
+                height={40}
+                className="inline-block align-middle drop-shadow-md transition-transform group-hover:-rotate-12 group-hover:scale-110 duration-300"
+                priority
+              />
+              <span className="text-3xl font-extrabold font-outfit text-gray-900 tracking-tight group-hover:text-amber-700 transition-colors duration-300">
+                nastrih.cz
+              </span>
             </Link>
-            <div className="hidden md:flex items-center space-x-8">
-              <Link
-                href="#features"
-                className="text-gray-600 hover:text-gray-900 transition-all hover:scale-105 font-inter"
-              >
-                Funkce
-              </Link>
-              <Link
-                href="#pricing"
-                className="text-gray-600 hover:text-gray-900 transition-all hover:scale-105 font-inter"
-              >
-                Ceník
-              </Link>
-              <Link
-                href="#contact"
-                className="text-gray-600 hover:text-gray-900 transition-all hover:scale-105 font-inter"
-              >
-                Kontakt
-              </Link>
-              <Link
-                href="/login"
-                className="text-gray-600 hover:text-gray-900 transition-all hover:scale-105 font-inter"
-              >
-                Přihlásit se
-              </Link>
+            {/* Divider */}
+            <div className="hidden md:block h-8 w-px bg-gray-200 mx-6 rounded-full" />
+            {/* Nav Links */}
+            <div className="hidden md:flex items-center space-x-6">
+              {[
+                { href: "#features", label: "Funkce" },
+                { href: "#pricing", label: "Ceník" },
+                { href: "#contact", label: "Kontakt" },
+                { href: "/login", label: "Přihlásit se" },
+              ].map((item) => (
+                <Link
+                  key={item.href}
+                  href={item.href}
+                  className="relative text-gray-700 hover:text-amber-700 font-inter font-medium px-3 py-1 rounded-md transition-all duration-200 hover:bg-amber-50 group"
+                >
+                  <span className="relative z-10">{item.label}</span>
+                  {/* Animated underline */}
+                  <span className="absolute left-1/2 -bottom-1 w-0 h-0.5 bg-amber-600 rounded-full transition-all duration-300 group-hover:w-full group-hover:left-0"></span>
+                </Link>
+              ))}
               <Link
                 href="/demo"
-                className="group relative inline-flex items-center justify-center px-6 py-2.5 text-lg font-medium text-white overflow-hidden rounded-full"
+                className="group relative inline-flex items-center justify-center px-6 py-2 text-lg font-medium text-white overflow-hidden rounded-full shadow-lg transition-all duration-300"
               >
                 <span className="absolute inset-0 bg-gradient-to-r from-amber-600 to-amber-700 transition-all duration-300" />
                 <span className="absolute inset-0 opacity-0 bg-gradient-to-r from-amber-700 to-amber-800 group-hover:opacity-100 transition-all duration-300" />
                 <span className="absolute inset-0 opacity-0 shadow-[inset_0_1px_2px_rgba(255,255,255,0.4)] group-hover:opacity-100 transition-all duration-300" />
                 <span className="relative flex items-center font-medium font-inter">
-                  <span className="group-hover:opacity-0 transition-opacity duration-300">Vyzkoušet zdarma</span>
-                  <span className="absolute inset-0 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity duration-300">Začít teď →</span>
+                  <span className="group-hover:opacity-0 transition-opacity duration-300">
+                    Vyzkoušet zdarma
+                  </span>
+                  <span className="absolute inset-0 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity duration-300">
+                    Začít teď →
+                  </span>
                 </span>
               </Link>
             </div>
+            {/* Hamburger for mobile */}
+            <button
+              className="md:hidden flex items-center justify-center p-2 rounded-lg hover:bg-amber-50 transition-colors focus:outline-none"
+              onClick={() => setMobileMenuOpen((v) => !v)}
+              aria-label="Open menu"
+            >
+              <svg
+                className="w-8 h-8 text-amber-700"
+                fill="none"
+                stroke="currentColor"
+                viewBox="0 0 24 24"
+                strokeWidth={2}
+              >
+                {mobileMenuOpen ? (
+                  <path
+                    strokeLinecap="round"
+                    strokeLinejoin="round"
+                    d="M6 18L18 6M6 6l12 12"
+                  />
+                ) : (
+                  <path
+                    strokeLinecap="round"
+                    strokeLinejoin="round"
+                    d="M4 8h16M4 16h16"
+                  />
+                )}
+              </svg>
+            </button>
           </div>
         </div>
+        {/* Mobile menu dropdown */}
+        {mobileMenuOpen && (
+          <div className="md:hidden bg-white/95 backdrop-blur-xl shadow-xl rounded-b-2xl border-b border-gray-100/70 px-4 py-6 space-y-4 animate-fade-in-down">
+            {[
+              { href: "#features", label: "Funkce" },
+              { href: "#pricing", label: "Ceník" },
+              { href: "#contact", label: "Kontakt" },
+              { href: "/login", label: "Přihlásit se" },
+            ].map((item) => (
+              <Link
+                key={item.href}
+                href={item.href}
+                className="block text-lg font-semibold text-gray-700 hover:text-amber-700 px-2 py-2 rounded-md transition-all duration-200 hover:bg-amber-50"
+                onClick={() => setMobileMenuOpen(false)}
+              >
+                {item.label}
+              </Link>
+            ))}
+            <Link
+              href="/demo"
+              className="block w-full text-center mt-2 px-6 py-3 text-lg font-bold text-white rounded-full bg-gradient-to-r from-amber-600 to-amber-700 shadow-xl hover:from-amber-700 hover:to-amber-800 transition-all duration-300"
+              onClick={() => setMobileMenuOpen(false)}
+            >
+              Vyzkoušet zdarma
+            </Link>
+          </div>
+        )}
       </nav>
 
       {/* Hero Section */}
@@ -99,7 +137,7 @@ export default function LandingPage() {
         {/* Warm, inviting background */}
         <div className="absolute inset-0 bg-gradient-to-br from-amber-50 via-white to-amber-50/30" />
         <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_top_right,_var(--tw-gradient-stops))] from-amber-100/40 via-transparent to-transparent" />
-        
+
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="relative z-10">
             <motion.div
@@ -108,7 +146,7 @@ export default function LandingPage() {
               transition={{ duration: 0.5 }}
               className="text-center max-w-3xl mx-auto mb-12"
             >
-              <motion.span 
+              <motion.span
                 className="inline-flex items-center px-4 py-1.5 rounded-full bg-amber-100 text-amber-800 text-sm font-medium mb-8 border border-amber-200/50 shadow-sm hover:shadow-md transition-all cursor-pointer"
                 whileHover={{ scale: 1.05 }}
                 whileTap={{ scale: 0.95 }}
@@ -144,8 +182,8 @@ export default function LandingPage() {
                 pro vaše holičství
               </h1>
               <p className="text-xl text-gray-600 mb-8 leading-relaxed font-inter">
-                Ušetřete čas, získejte více klientů a poskytněte profesionální zážitek z objednání.
-                Vše na jednom místě.
+                Ušetřete čas, získejte více klientů a poskytněte profesionální
+                zážitek z objednání. Vše na jednom místě.
               </p>
               <div className="flex flex-col sm:flex-row gap-4 justify-center">
                 <motion.div
@@ -264,7 +302,9 @@ export default function LandingPage() {
                     animate={{ opacity: 1, y: 0 }}
                     transition={{ delay: index * 0.1 }}
                   >
-                    <div className={`w-12 h-12 rounded-xl bg-gradient-to-br ${item.gradient} flex items-center justify-center transform transition-transform duration-300 group-hover:scale-110 group-hover:rotate-3`}>
+                    <div
+                      className={`w-12 h-12 rounded-xl bg-gradient-to-br ${item.gradient} flex items-center justify-center transform transition-transform duration-300 group-hover:scale-110 group-hover:rotate-3`}
+                    >
                       <svg
                         className={`w-6 h-6 ${item.iconColor}`}
                         fill="none"
@@ -288,7 +328,12 @@ export default function LandingPage() {
             >
               <div className="relative aspect-[16/9] rounded-3xl overflow-hidden border border-amber-200/50 shadow-2xl bg-gradient-to-b from-white to-amber-50/30 group hover:shadow-amber-100/50 transition-shadow duration-300">
                 <div className="absolute inset-0 flex items-center justify-center text-gray-400">
-                  Dashboard screenshot
+                  <Image
+                    src="/dashboard.png"
+                    alt="Dashboard"
+                    width={1000}
+                    height={1000}
+                  />
                 </div>
                 {/* Decorative elements */}
                 <div className="absolute inset-0 bg-grid-pattern opacity-[0.015]" />
@@ -785,7 +830,7 @@ export default function LandingPage() {
                   { text: "Blog", href: "#" },
                   { text: "Dokumentace", href: "#" },
                   { text: "Podpora", href: "#" },
-                ].map((link, index) => (
+                ].map((link) => (
                   <motion.li
                     key={link.text}
                     whileHover={{ x: 5 }}
@@ -815,7 +860,7 @@ export default function LandingPage() {
                   { text: "Obchodní podmínky", href: "#" },
                   { text: "Ochrana osobních údajů", href: "#" },
                   { text: "GDPR", href: "#" },
-                ].map((link, index) => (
+                ].map((link) => (
                   <motion.li
                     key={link.text}
                     whileHover={{ x: 5 }}

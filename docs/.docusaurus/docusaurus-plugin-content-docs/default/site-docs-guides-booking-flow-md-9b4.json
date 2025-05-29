@@ -5,20 +5,20 @@
   "source": "@site/docs/guides/booking-flow.md",
   "sourceDirName": "guides",
   "slug": "/guides/booking-flow",
-  "permalink": "/docs/guides/booking-flow",
+  "permalink": "/nastrih.cz/docs/guides/booking-flow",
   "draft": false,
   "unlisted": false,
-  "editUrl": "https://github.com/yourusername/nastrih.cz/tree/main/docs/docs/guides/booking-flow.md",
+  "editUrl": "https://github.com/appitect-dev/nastrih.cz/tree/main/docs/docs/guides/booking-flow.md",
   "tags": [],
   "version": "current",
   "frontMatter": {},
   "sidebar": "tutorialSidebar",
   "previous": {
     "title": "Getting Started",
-    "permalink": "/docs/guides/getting-started"
+    "permalink": "/nastrih.cz/docs/guides/getting-started"
   },
   "next": {
     "title": "Theme System Documentation",
-    "permalink": "/docs/guides/theme-system"
+    "permalink": "/nastrih.cz/docs/guides/theme-system"
   }
 }

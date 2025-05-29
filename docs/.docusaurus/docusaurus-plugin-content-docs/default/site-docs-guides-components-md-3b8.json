@@ -5,11 +5,20 @@
   "source": "@site/docs/guides/components.md",
   "sourceDirName": "guides",
   "slug": "/guides/components",
-  "permalink": "/docs/guides/components",
+  "permalink": "/nastrih.cz/docs/guides/components",
   "draft": false,
   "unlisted": false,
-  "editUrl": "https://github.com/yourusername/nastrih.cz/tree/main/docs/docs/guides/components.md",
+  "editUrl": "https://github.com/appitect-dev/nastrih.cz/tree/main/docs/docs/guides/components.md",
   "tags": [],
   "version": "current",
-  "frontMatter": {}
+  "frontMatter": {},
+  "sidebar": "tutorialSidebar",
+  "previous": {
+    "title": "Theme System Documentation",
+    "permalink": "/nastrih.cz/docs/guides/theme-system"
+  },
+  "next": {
+    "title": "Admin Panel Documentation",
+    "permalink": "/nastrih.cz/docs/guides/admin-panel"
+  }
 }

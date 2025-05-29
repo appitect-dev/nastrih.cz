@@ -1,0 +1,24 @@
+{
+  "id": "backend/overview",
+  "title": "Backend Overview",
+  "description": "The Nastrih.cz backend is built using Spring Boot 3.2.2, providing a robust and scalable REST API for the barbershop booking system.",
+  "source": "@site/docs/backend/overview.md",
+  "sourceDirName": "backend",
+  "slug": "/backend/overview",
+  "permalink": "/nastrih.cz/docs/backend/overview",
+  "draft": false,
+  "unlisted": false,
+  "editUrl": "https://github.com/appitect-dev/nastrih.cz/tree/main/docs/docs/backend/overview.md",
+  "tags": [],
+  "version": "current",
+  "frontMatter": {},
+  "sidebar": "tutorialSidebar",
+  "previous": {
+    "title": "Frontend Overview",
+    "permalink": "/nastrih.cz/docs/frontend/overview"
+  },
+  "next": {
+    "title": "Getting Started",
+    "permalink": "/nastrih.cz/docs/guides/getting-started"
+  }
+}

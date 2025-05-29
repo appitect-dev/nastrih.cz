@@ -1,86 +1,102 @@
 {
   "docusaurus-plugin-content-docs": {
     "default": {
-      "path": "/docs",
+      "path": "/nastrih.cz/docs",
       "versions": [
         {
           "name": "current",
           "label": "Next",
           "isLast": true,
-          "path": "/docs",
-          "mainDocId": "guides/README",
+          "path": "/nastrih.cz/docs",
+          "mainDocId": "intro",
           "docs": [
             {
+              "id": "backend/overview",
+              "path": "/nastrih.cz/docs/backend/overview",
+              "sidebar": "tutorialSidebar"
+            },
+            {
+              "id": "deployment/ci-cd",
+              "path": "/nastrih.cz/docs/deployment/ci-cd",
+              "sidebar": "tutorialSidebar"
+            },
+            {
+              "id": "frontend/overview",
+              "path": "/nastrih.cz/docs/frontend/overview",
+              "sidebar": "tutorialSidebar"
+            },
+            {
               "id": "guides/admin-panel",
-              "path": "/docs/guides/admin-panel",
+              "path": "/nastrih.cz/docs/guides/admin-panel",
               "sidebar": "tutorialSidebar"
             },
             {
               "id": "guides/booking-flow",
-              "path": "/docs/guides/booking-flow",
+              "path": "/nastrih.cz/docs/guides/booking-flow",
               "sidebar": "tutorialSidebar"
             },
             {
               "id": "guides/components",
-              "path": "/docs/guides/components"
+              "path": "/nastrih.cz/docs/guides/components",
+              "sidebar": "tutorialSidebar"
             },
             {
               "id": "guides/getting-started",
-              "path": "/docs/guides/getting-started",
+              "path": "/nastrih.cz/docs/guides/getting-started",
               "sidebar": "tutorialSidebar"
             },
             {
               "id": "guides/README",
-              "path": "/docs/guides/",
-              "sidebar": "tutorialSidebar"
+              "path": "/nastrih.cz/docs/guides/"
             },
             {
               "id": "guides/theme-system",
-              "path": "/docs/guides/theme-system",
+              "path": "/nastrih.cz/docs/guides/theme-system",
               "sidebar": "tutorialSidebar"
             },
             {
               "id": "intro",
-              "path": "/docs/intro"
+              "path": "/nastrih.cz/docs/intro",
+              "sidebar": "tutorialSidebar"
             },
             {
               "id": "tutorial-basics/congratulations",
-              "path": "/docs/tutorial-basics/congratulations"
+              "path": "/nastrih.cz/docs/tutorial-basics/congratulations"
             },
             {
               "id": "tutorial-basics/create-a-blog-post",
-              "path": "/docs/tutorial-basics/create-a-blog-post"
+              "path": "/nastrih.cz/docs/tutorial-basics/create-a-blog-post"
             },
             {
               "id": "tutorial-basics/create-a-document",
-              "path": "/docs/tutorial-basics/create-a-document"
+              "path": "/nastrih.cz/docs/tutorial-basics/create-a-document"
             },
             {
               "id": "tutorial-basics/create-a-page",
-              "path": "/docs/tutorial-basics/create-a-page"
+              "path": "/nastrih.cz/docs/tutorial-basics/create-a-page"
             },
             {
               "id": "tutorial-basics/deploy-your-site",
-              "path": "/docs/tutorial-basics/deploy-your-site"
+              "path": "/nastrih.cz/docs/tutorial-basics/deploy-your-site"
             },
             {
               "id": "tutorial-basics/markdown-features",
-              "path": "/docs/tutorial-basics/markdown-features"
+              "path": "/nastrih.cz/docs/tutorial-basics/markdown-features"
             },
             {
               "id": "tutorial-extras/manage-docs-versions",
-              "path": "/docs/tutorial-extras/manage-docs-versions"
+              "path": "/nastrih.cz/docs/tutorial-extras/manage-docs-versions"
             },
             {
               "id": "tutorial-extras/translate-your-site",
-              "path": "/docs/tutorial-extras/translate-your-site"
+              "path": "/nastrih.cz/docs/tutorial-extras/translate-your-site"
             }
           ],
           "draftIds": [],
           "sidebars": {
             "tutorialSidebar": {
               "link": {
-                "path": "/docs/guides/",
+                "path": "/nastrih.cz/docs/intro",
                 "label": "Introduction"
               }
             }

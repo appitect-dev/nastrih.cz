@@ -5,16 +5,20 @@
   "source": "@site/docs/guides/admin-panel.md",
   "sourceDirName": "guides",
   "slug": "/guides/admin-panel",
-  "permalink": "/docs/guides/admin-panel",
+  "permalink": "/nastrih.cz/docs/guides/admin-panel",
   "draft": false,
   "unlisted": false,
-  "editUrl": "https://github.com/yourusername/nastrih.cz/tree/main/docs/docs/guides/admin-panel.md",
+  "editUrl": "https://github.com/appitect-dev/nastrih.cz/tree/main/docs/docs/guides/admin-panel.md",
   "tags": [],
   "version": "current",
   "frontMatter": {},
   "sidebar": "tutorialSidebar",
   "previous": {
-    "title": "Theme System Documentation",
-    "permalink": "/docs/guides/theme-system"
+    "title": "Components Documentation",
+    "permalink": "/nastrih.cz/docs/guides/components"
+  },
+  "next": {
+    "title": "CI/CD Pipeline",
+    "permalink": "/nastrih.cz/docs/deployment/ci-cd"
   }
 }
