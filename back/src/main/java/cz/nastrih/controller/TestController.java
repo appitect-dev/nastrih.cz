@@ -9,19 +9,19 @@ import org.springframework.web.bind.annotation.RestController;
 
 @RestController
 @RequestMapping("/api/test")
-@Tag(name = "Test", description = "Test endpoints")
+@Tag(name = "Test", description = "Test endpoints for API health and connectivity")
 public class TestController {
 
     @GetMapping("/hello")
     @Operation(
-        summary = "Get hello world message",
-        description = "Returns a simple hello world message to test the API"
+            summary = "Get hello world message",
+            description = "Returns a simple hello world message to test the API"
     )
     @ApiResponse(
-        responseCode = "200",
-        description = "Success"
+            responseCode = "200",
+            description = "API is reachable and returns hello message"
     )
     public String helloWorld() {
         return "Hello from Nastrih.cz API!";
     }
-} 
+}
