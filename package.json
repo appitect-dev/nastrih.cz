@@ -1,0 +1,10 @@
+{
+  "name": "@nastrih/back",
+  "version": "1.0.0",
+  "private": true,
+  "scripts": {
+    "dev": "echo 'Backend development server not implemented yet'",
+    "build": "echo 'Backend build not implemented yet'",
+    "start": "echo 'Backend start not implemented yet'"
+  }
+} 
