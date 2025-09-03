@@ -12,8 +12,8 @@ import java.util.UUID;
 @Setter
 @NoArgsConstructor
 @AllArgsConstructor
-@Builder
-@Entity // <-- TATO ANOTACE JE KLÍČOVÁ!
+@Builder(toBuilder = true)
+@Entity
 @Table(name = "users")
 @ToString(exclude = "password")
 public class User {
@@ -63,4 +63,12 @@ public class User {
     protected void onUpdate() {
         updatedAt = LocalDateTime.now();
     }
+
+    public boolean isActive() { return active; }
+    public void setActive(boolean active) { this.active = active; }
+    public void setEmail(String email) { this.email = email; }
+    public void setFirstName(String firstName) { this.firstName = firstName; }
+    public void setLastName(String lastName) { this.lastName = lastName; }
+    public void setPhone(String phone) { this.phone = phone; }
+    public void setRole(UserRole role) { this.role = role; }
 }
