@@ -7,6 +7,7 @@ import org.springframework.data.annotation.LastModifiedDate;
 import org.springframework.data.jpa.domain.support.AuditingEntityListener;
 import java.time.LocalDateTime;
 
+@Data
 @Getter
 @Setter
 @NoArgsConstructor
@@ -43,10 +44,4 @@ public class Organization {
     @LastModifiedDate
     @Column(nullable = false)
     private LocalDateTime updatedAt; // Datum a čas poslední aktualizace záznamu
-
-    public void setName(String name) { this.name = name; }
-    public void setAddress(String address) { this.address = address; }
-    public void setPhone(String phone) { this.phone = phone; }
-    public void setEmail(String email) { this.email = email; }
-    public void setWebsite(String website) { this.website = website; }
 }

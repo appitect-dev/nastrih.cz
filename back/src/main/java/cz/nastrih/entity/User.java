@@ -7,13 +7,14 @@ import lombok.*;
 import java.time.LocalDateTime;
 import java.util.UUID;
 
-@Entity // <-- TATO ANOTACE JE KLÍČOVÁ!
-@Table(name = "users")
+@Data
 @Getter
 @Setter
 @NoArgsConstructor
 @AllArgsConstructor
 @Builder(toBuilder = true)
+@Entity
+@Table(name = "users")
 @ToString(exclude = "password")
 public class User {
 

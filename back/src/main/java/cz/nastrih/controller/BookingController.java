@@ -14,6 +14,12 @@ import cz.nastrih.service.UserService;
 import jakarta.validation.Valid;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
+import io.swagger.v3.oas.annotations.Operation;
+import io.swagger.v3.oas.annotations.responses.ApiResponse;
+import io.swagger.v3.oas.annotations.responses.ApiResponses;
+
 import java.util.List;
 import java.util.Optional;
 import java.util.UUID;
@@ -21,6 +27,7 @@ import java.util.UUID;
 @RestController
 @RequestMapping("/api/bookings")
 public class BookingController {
+    private static final Logger log = LoggerFactory.getLogger(BookingController.class);
     private final BookingService bookingService;
     private final UserService userService;
     private final ServiceService serviceService;
@@ -33,24 +40,42 @@ public class BookingController {
         this.staffService = staffService;
     }
 
+    @Operation(summary = "Get all bookings")
+    @ApiResponses({
+        @ApiResponse(responseCode = "200", description = "List of bookings returned")
+    })
     @GetMapping
     public ResponseEntity<List<Booking>> getAllBookings() {
+        log.info("Received request to get all bookings");
         return ResponseEntity.ok(bookingService.findAll());
     }
 
+    @Operation(summary = "Get booking by ID")
+    @ApiResponses({
+        @ApiResponse(responseCode = "200", description = "Booking found"),
+        @ApiResponse(responseCode = "404", description = "Booking not found")
+    })
     @GetMapping("/{id}")
     public ResponseEntity<Booking> getBookingById(@PathVariable UUID id) {
+        log.info("Received request to get booking by id: {}", id);
         return bookingService.findById(id)
                 .map(ResponseEntity::ok)
                 .orElse(ResponseEntity.notFound().build());
     }
 
+    @Operation(summary = "Create a new booking")
+    @ApiResponses({
+        @ApiResponse(responseCode = "200", description = "Booking created"),
+        @ApiResponse(responseCode = "400", description = "Invalid input")
+    })
     @PostMapping
     public ResponseEntity<Booking> createBooking(@Valid @RequestBody BookingCreateDto dto) {
+        log.info("Received request to create booking: {}", dto);
         Optional<User> user = userService.findById(dto.getUserId());
         Optional<Service> service = serviceService.findById(dto.getServiceId());
         Optional<Staff> staff = staffService.findById(dto.getStaffId());
         if (user.isEmpty() || service.isEmpty() || staff.isEmpty()) {
+            log.warn("Invalid booking creation request: missing user/service/staff");
             return ResponseEntity.badRequest().build();
         }
         Booking booking = Booking.builder()
@@ -66,10 +91,17 @@ public class BookingController {
         return ResponseEntity.ok(bookingService.save(booking));
     }
 
+    @Operation(summary = "Update a booking")
+    @ApiResponses({
+        @ApiResponse(responseCode = "200", description = "Booking updated"),
+        @ApiResponse(responseCode = "404", description = "Booking not found")
+    })
     @PutMapping("/{id}")
     public ResponseEntity<Booking> updateBooking(@PathVariable UUID id, @Valid @RequestBody BookingUpdateDto dto) {
+        log.info("Received request to update booking id: {} with data: {}", id, dto);
         Optional<Booking> existing = bookingService.findById(id);
         if (existing.isEmpty()) {
+            log.warn("Booking not found for update: {}", id);
             return ResponseEntity.notFound().build();
         }
         Booking booking = existing.get();
@@ -81,13 +113,19 @@ public class BookingController {
         return ResponseEntity.ok(bookingService.save(booking));
     }
 
+    @Operation(summary = "Delete a booking")
+    @ApiResponses({
+        @ApiResponse(responseCode = "204", description = "Booking deleted"),
+        @ApiResponse(responseCode = "404", description = "Booking not found")
+    })
     @DeleteMapping("/{id}")
     public ResponseEntity<Void> deleteBooking(@PathVariable UUID id) {
+        log.info("Received request to delete booking id: {}", id);
         if (bookingService.findById(id).isEmpty()) {
+            log.warn("Booking not found for deletion: {}", id);
             return ResponseEntity.notFound().build();
         }
         bookingService.deleteById(id);
         return ResponseEntity.noContent().build();
     }
 }
-

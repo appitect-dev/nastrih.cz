@@ -8,13 +8,14 @@ import java.time.LocalDateTime;
 import java.util.UUID;
 import cz.nastrih.enums.BookingStatus;
 
-@Entity
-@Table(name = "bookings")
+@Data
 @Getter
 @Setter
 @NoArgsConstructor
 @AllArgsConstructor
 @Builder(toBuilder = true)
+@Entity
+@Table(name = "bookings")
 public class Booking {
     @Id
     @GeneratedValue(strategy = GenerationType.UUID)
