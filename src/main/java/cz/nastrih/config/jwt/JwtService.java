@@ -1,5 +1,10 @@
 package cz.nastrih.config.jwt;
 
+// Služba pro práci s JWT tokeny.
+// - Generuje podepsané tokeny (HS256)
+// - Vytahuje informace (subjekt/expirace)
+// - Ověřuje platnost tokenu
+
 import io.jsonwebtoken.Claims;
 import io.jsonwebtoken.Jwts;
 import io.jsonwebtoken.SignatureAlgorithm;
@@ -74,4 +79,3 @@ public class JwtService {
         return Keys.hmacShaKeyFor(keyBytes);
     }
 }
-

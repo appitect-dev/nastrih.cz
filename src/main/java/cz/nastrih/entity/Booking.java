@@ -1,5 +1,10 @@
 package cz.nastrih.entity;
 
+// Entita rezervace.
+// - Vazby: zákazník (User), služba (Service), personál (Staff)
+// - Datum a čas (start/end), stav rezervace, poznámka
+// - Automatické timestampy createdAt/updatedAt
+
 import jakarta.persistence.*;
 import lombok.*;
 import java.time.LocalDate;

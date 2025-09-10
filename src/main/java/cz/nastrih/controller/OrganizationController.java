@@ -1,14 +1,22 @@
 package cz.nastrih.controller;
 
+// Řadič pro správu organizací/provozoven.
+// - Veřejné čtení seznamu a detailu
+// - CRUD operace pro interní administraci
+
 import cz.nastrih.dtos.OrganizationCreationDto;
 import cz.nastrih.dtos.OrganizationUpdateDto;
 import cz.nastrih.entity.Organization;
 import cz.nastrih.service.OrganizationService;
+import io.swagger.v3.oas.annotations.security.SecurityRequirement;
+import io.swagger.v3.oas.annotations.tags.Tag;
 import jakarta.validation.Valid;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
+
 import java.util.List;
 
+@Tag(name = "Organizations", description = "Správa organizací/provozoven (čtení veřejné, změny chráněné)")
 @RestController
 @RequestMapping("/api/organizations")
 public class OrganizationController {
@@ -30,6 +38,7 @@ public class OrganizationController {
                 .orElse(ResponseEntity.notFound().build());
     }
 
+    @SecurityRequirement(name = "bearerAuth")
     @PostMapping
     public ResponseEntity<Organization> createOrganization(@Valid @RequestBody OrganizationCreationDto dto) {
         Organization organization = Organization.builder()
@@ -42,6 +51,7 @@ public class OrganizationController {
         return ResponseEntity.ok(organizationService.save(organization));
     }
 
+    @SecurityRequirement(name = "bearerAuth")
     @PutMapping("/{id}")
     public ResponseEntity<Organization> updateOrganization(@PathVariable Long id, @Valid @RequestBody OrganizationUpdateDto dto) {
         return organizationService.findById(id)
@@ -56,6 +66,7 @@ public class OrganizationController {
                 .orElse(ResponseEntity.notFound().build());
     }
 
+    @SecurityRequirement(name = "bearerAuth")
     @DeleteMapping("/{id}")
     public ResponseEntity<Void> deleteOrganization(@PathVariable Long id) {
         if (organizationService.findById(id).isEmpty()) {
@@ -65,4 +76,3 @@ public class OrganizationController {
         return ResponseEntity.noContent().build();
     }
 }
-

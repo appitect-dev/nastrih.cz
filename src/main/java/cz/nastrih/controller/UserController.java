@@ -1,10 +1,16 @@
 package cz.nastrih.controller;
 
+// Řadič pro správu uživatelů.
+// - Veřejná registrace (/register) s bezp. hashováním hesla
+// - CRUD operace pro uživatele (v budoucnu omezit na role)
+
 import cz.nastrih.dtos.UserRegistrationDto;
 import cz.nastrih.dtos.UserUpdateDto;
 import cz.nastrih.entity.User;
 import cz.nastrih.enums.UserRole;
 import cz.nastrih.service.UserService;
+import io.swagger.v3.oas.annotations.security.SecurityRequirement;
+import io.swagger.v3.oas.annotations.tags.Tag;
 import jakarta.validation.Valid;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
@@ -13,6 +19,7 @@ import java.util.Optional;
 import java.util.UUID;
 import org.springframework.security.crypto.password.PasswordEncoder;
 
+@Tag(name = "Users", description = "Správa uživatelů; registrace veřejná, ostatní chráněné")
 @RestController
 @RequestMapping("/api/users")
 public class UserController {
@@ -24,11 +31,13 @@ public class UserController {
         this.passwordEncoder = passwordEncoder;
     }
 
+    @SecurityRequirement(name = "bearerAuth")
     @GetMapping
     public ResponseEntity<List<User>> getAllUsers() {
         return ResponseEntity.ok(userService.findAll());
     }
 
+    @SecurityRequirement(name = "bearerAuth")
     @GetMapping("/{id}")
     public ResponseEntity<User> getUserById(@PathVariable UUID id) {
         return userService.findById(id)
@@ -53,6 +62,7 @@ public class UserController {
         return ResponseEntity.ok(userService.save(user));
     }
 
+    @SecurityRequirement(name = "bearerAuth")
     @PutMapping("/{id}")
     public ResponseEntity<User> updateUser(@PathVariable UUID id, @Valid @RequestBody UserUpdateDto dto) {
         Optional<User> existing = userService.findById(id);
@@ -69,6 +79,7 @@ public class UserController {
         return ResponseEntity.ok(userService.save(user));
     }
 
+    @SecurityRequirement(name = "bearerAuth")
     @DeleteMapping("/{id}")
     public ResponseEntity<Void> deleteUser(@PathVariable UUID id) {
         if (userService.findById(id).isEmpty()) {

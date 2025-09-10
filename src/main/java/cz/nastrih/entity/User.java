@@ -1,5 +1,10 @@
 package cz.nastrih.entity;
 
+// Entita uživatele systému.
+// - Unikátní e-mail, role (ADMIN/STAFF/CUSTOMER), aktivní příznak
+// - Heslo je WRITE_ONLY (nevrací se v JSONu)
+// - Automatické timestampy createdAt/updatedAt
+
 import cz.nastrih.enums.UserRole;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import jakarta.persistence.*;

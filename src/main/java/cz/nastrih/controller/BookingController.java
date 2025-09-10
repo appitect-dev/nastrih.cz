@@ -1,5 +1,9 @@
 package cz.nastrih.controller;
 
+// Řadič pro práci s rezervacemi (CRUD + dostupnost).
+// Obsahuje koncové body pro vytvoření/úpravu/smazání a pro získání volných termínů.
+// Používá služby: BookingService, UserService, ServiceService, StaffService.
+
 import cz.nastrih.dtos.BookingCreateDto;
 import cz.nastrih.dtos.BookingUpdateDto;
 import cz.nastrih.dtos.TimeSlot;
@@ -21,6 +25,8 @@ import org.slf4j.LoggerFactory;
 import io.swagger.v3.oas.annotations.Operation;
 import io.swagger.v3.oas.annotations.responses.ApiResponse;
 import io.swagger.v3.oas.annotations.responses.ApiResponses;
+import io.swagger.v3.oas.annotations.tags.Tag;
+import io.swagger.v3.oas.annotations.security.SecurityRequirement;
 
 import java.time.LocalTime;
 import java.util.List;
@@ -28,9 +34,11 @@ import java.util.Optional;
 import java.util.UUID;
 import java.util.stream.Collectors;
 
+@Tag(name = "Bookings", description = "Správa rezervací a dostupnosti")
 @RestController
 @RequestMapping("/api/bookings")
 public class BookingController {
+    // Logger pro audit požadavků a ladění
     private static final Logger log = LoggerFactory.getLogger(BookingController.class);
     private final BookingService bookingService;
     private final UserService userService;
@@ -48,8 +56,10 @@ public class BookingController {
     @ApiResponses({
         @ApiResponse(responseCode = "200", description = "List of bookings returned")
     })
+    @SecurityRequirement(name = "bearerAuth")
     @GetMapping
     public ResponseEntity<List<Booking>> getAllBookings() {
+        // Vrátí všechny rezervace (v budoucnu lze omezit dle role/organizace)
         log.info("Received request to get all bookings");
         return ResponseEntity.ok(bookingService.findAll());
     }
@@ -59,6 +69,7 @@ public class BookingController {
         @ApiResponse(responseCode = "200", description = "Booking found"),
         @ApiResponse(responseCode = "404", description = "Booking not found")
     })
+    @SecurityRequirement(name = "bearerAuth")
     @GetMapping("/{id}")
     public ResponseEntity<Booking> getBookingById(@PathVariable UUID id) {
         log.info("Received request to get booking by id: {}", id);
@@ -72,14 +83,21 @@ public class BookingController {
         @ApiResponse(responseCode = "200", description = "Booking created"),
         @ApiResponse(responseCode = "400", description = "Invalid input")
     })
+    @SecurityRequirement(name = "bearerAuth")
     @PostMapping
     public ResponseEntity<Booking> createBooking(@Valid @RequestBody BookingCreateDto dto) {
+        // Vytvoří novou rezervaci. Validuje existenci uživatele/služby/personálu
+        // a kontroluje kolize s existujícími rezervacemi (409 při konfliktu).
         log.info("Received request to create booking: {}", dto);
         Optional<User> user = userService.findById(dto.getUserId());
         Optional<Service> service = serviceService.findById(dto.getServiceId());
         Optional<Staff> staff = staffService.findById(dto.getStaffId());
         if (user.isEmpty() || service.isEmpty() || staff.isEmpty()) {
             log.warn("Invalid booking creation request: missing user/service/staff");
+            return ResponseEntity.badRequest().build();
+        }
+        // Ověřit, že vybraný personál danou službu skutečně nabízí
+        if (!staffService.offersService(dto.getStaffId(), dto.getServiceId())) {
             return ResponseEntity.badRequest().build();
         }
         if (bookingService.hasConflict(dto.getStaffId(), dto.getDate(), dto.getStartTime(), dto.getEndTime())) {
@@ -103,6 +121,7 @@ public class BookingController {
         @ApiResponse(responseCode = "200", description = "Booking updated"),
         @ApiResponse(responseCode = "404", description = "Booking not found")
     })
+    @SecurityRequirement(name = "bearerAuth")
     @PutMapping("/{id}")
     public ResponseEntity<Booking> updateBooking(@PathVariable UUID id, @Valid @RequestBody BookingUpdateDto dto) {
         log.info("Received request to update booking id: {} with data: {}", id, dto);
@@ -125,6 +144,7 @@ public class BookingController {
         @ApiResponse(responseCode = "204", description = "Booking deleted"),
         @ApiResponse(responseCode = "404", description = "Booking not found")
     })
+    @SecurityRequirement(name = "bearerAuth")
     @DeleteMapping("/{id}")
     public ResponseEntity<Void> deleteBooking(@PathVariable UUID id) {
         log.info("Received request to delete booking id: {}", id);
@@ -143,9 +163,15 @@ public class BookingController {
     })
     @PostMapping("/availability")
     public ResponseEntity<List<TimeSlot>> getAvailability(@Valid @RequestBody TimeSlotRequestDto req) {
+        // Vrátí volné časové sloty pro daného pracovníka/službu/den.
+        // Délka slotu vychází z délky služby, pracovní doba je v konfiguraci.
         Optional<Staff> staff = staffService.findById(req.getStaffId());
         Optional<Service> service = serviceService.findById(req.getServiceId());
         if (staff.isEmpty() || service.isEmpty() || !service.get().isActive() || !staff.get().isActive()) {
+            return ResponseEntity.badRequest().build();
+        }
+        // Ověřit, že personál nabízí danou službu
+        if (!staffService.offersService(req.getStaffId(), req.getServiceId())) {
             return ResponseEntity.badRequest().build();
         }
         int duration = service.get().getDuration();

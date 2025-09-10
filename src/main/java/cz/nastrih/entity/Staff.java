@@ -1,5 +1,6 @@
 package cz.nastrih.entity;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import jakarta.persistence.*;
 import lombok.*;
 
@@ -40,6 +41,7 @@ public class Staff {
             inverseJoinColumns = @JoinColumn(name = "service_id")
     )
     @Builder.Default
+    @JsonIgnore // skryjeme seznam služeb u personálu kvůli přehlednému JSONu
     private Set<Service> services = new HashSet<>();
 
     @Column(updatable = false, nullable = false)

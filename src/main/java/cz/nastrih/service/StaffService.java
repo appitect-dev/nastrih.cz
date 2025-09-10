@@ -1,5 +1,9 @@
 package cz.nastrih.service;
 
+// Služba pro práci s personálem (Staff).
+// - Základní CRUD
+// - Pomocná metoda pro ověření, zda personál nabízí konkrétní službu
+
 import cz.nastrih.entity.Staff;
 import cz.nastrih.repository.StaffRepository;
 import org.springframework.stereotype.Service;
@@ -36,5 +40,8 @@ public class StaffService {
                 .filter(Staff::isActive)
                 .toList();
     }
-}
 
+    public boolean offersService(UUID staffId, UUID serviceId) {
+        return staffRepository.existsByIdAndServices_Id(staffId, serviceId);
+    }
+}

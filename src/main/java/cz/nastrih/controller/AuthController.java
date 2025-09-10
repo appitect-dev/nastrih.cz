@@ -1,5 +1,9 @@
 package cz.nastrih.controller;
 
+// Řadič pro autentizaci.
+// - /api/auth/login: přihlášení a vydání JWT
+// - /api/auth/me: vrací základní info o přihlášeném uživateli
+
 import cz.nastrih.config.jwt.JwtService;
 import cz.nastrih.dtos.AuthRequest;
 import org.springframework.http.ResponseEntity;
@@ -11,9 +15,13 @@ import org.springframework.security.core.annotation.AuthenticationPrincipal;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.web.bind.annotation.*;
 
+import io.swagger.v3.oas.annotations.tags.Tag;
+import io.swagger.v3.oas.annotations.security.SecurityRequirement;
+
 import jakarta.validation.Valid;
 import java.util.Map;
 
+@Tag(name = "Auth", description = "Autentizace pomocí JWT")
 @RestController
 @RequestMapping("/api/auth")
 public class AuthController {
@@ -40,6 +48,7 @@ public class AuthController {
         }
     }
 
+    @SecurityRequirement(name = "bearerAuth")
     @GetMapping("/me")
     public ResponseEntity<?> me(@AuthenticationPrincipal UserDetails user) {
         if (user == null) return ResponseEntity.status(401).build();

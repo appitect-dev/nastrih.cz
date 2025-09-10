@@ -1,5 +1,9 @@
 package cz.nastrih;
 
+// Hlavní spouštěcí třída aplikace Nastrih.cz.
+// - Aktivuje JPA Auditing (automatické timestampy u entit s auditem)
+// - Startuje Spring Boot aplikaci
+
 import io.swagger.v3.oas.annotations.OpenAPIDefinition;
 import io.swagger.v3.oas.annotations.info.Info;
 import org.springframework.boot.SpringApplication;

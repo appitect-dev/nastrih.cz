@@ -1,5 +1,10 @@
 package cz.nastrih.config.jwt;
 
+// Servlet filtr, který:
+// - čte JWT z hlavičky Authorization: Bearer <token>
+// - ověří token a načte uživatele
+// - nastaví autentizaci do SecurityContextHolder
+
 import jakarta.servlet.FilterChain;
 import jakarta.servlet.ServletException;
 import jakarta.servlet.http.HttpServletRequest;
@@ -61,4 +66,3 @@ public class JwtAuthFilter extends OncePerRequestFilter {
         filterChain.doFilter(request, response);
     }
 }
-

@@ -1,5 +1,6 @@
 package cz.nastrih.entity;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import jakarta.persistence.*;
 import lombok.*;
 
@@ -47,6 +48,7 @@ public class Service {
     // Je dobré specifikovat fetch type pro čitelnost
     @ManyToMany(mappedBy = "services", fetch = FetchType.LAZY)
     @Builder.Default
+    @JsonIgnore // skryjeme seznam personálu u služby kvůli přehlednému JSONu
     private Set<Staff> staff = new HashSet<>();
 
     @PrePersist

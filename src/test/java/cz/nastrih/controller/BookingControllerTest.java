@@ -75,10 +75,11 @@ class BookingControllerTest {
         when(userService.findById(dto.getUserId())).thenReturn(Optional.of(user));
         when(serviceService.findById(dto.getServiceId())).thenReturn(Optional.of(service));
         when(staffService.findById(dto.getStaffId())).thenReturn(Optional.of(staff));
+        when(staffService.offersService(dto.getStaffId(), dto.getServiceId())).thenReturn(true);
+        when(bookingService.hasConflict(dto.getStaffId(), dto.getDate(), dto.getStartTime(), dto.getEndTime())).thenReturn(false);
         when(bookingService.save(any(Booking.class))).thenReturn(booking);
         ResponseEntity<Booking> response = bookingController.createBooking(dto);
         assertEquals(200, response.getStatusCodeValue());
         assertNotNull(response.getBody());
     }
 }
-

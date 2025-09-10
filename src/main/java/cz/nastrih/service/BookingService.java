@@ -1,5 +1,10 @@
 package cz.nastrih.service;
 
+// Služba pro práci s rezervacemi.
+// - Základní CRUD operace
+// - Kontrola kolizí rezervací (PENDING/CONFIRMED)
+// - Výpočet dostupných časů dle pracovní doby a délky služby
+
 import cz.nastrih.entity.Booking;
 import cz.nastrih.enums.BookingStatus;
 import cz.nastrih.repository.BookingRepository;
