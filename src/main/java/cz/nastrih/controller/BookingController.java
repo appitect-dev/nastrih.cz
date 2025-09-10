@@ -2,6 +2,8 @@ package cz.nastrih.controller;
 
 import cz.nastrih.dtos.BookingCreateDto;
 import cz.nastrih.dtos.BookingUpdateDto;
+import cz.nastrih.dtos.TimeSlot;
+import cz.nastrih.dtos.TimeSlotRequestDto;
 import cz.nastrih.entity.Booking;
 import cz.nastrih.entity.Service;
 import cz.nastrih.entity.Staff;
@@ -20,9 +22,11 @@ import io.swagger.v3.oas.annotations.Operation;
 import io.swagger.v3.oas.annotations.responses.ApiResponse;
 import io.swagger.v3.oas.annotations.responses.ApiResponses;
 
+import java.time.LocalTime;
 import java.util.List;
 import java.util.Optional;
 import java.util.UUID;
+import java.util.stream.Collectors;
 
 @RestController
 @RequestMapping("/api/bookings")
@@ -78,6 +82,9 @@ public class BookingController {
             log.warn("Invalid booking creation request: missing user/service/staff");
             return ResponseEntity.badRequest().build();
         }
+        if (bookingService.hasConflict(dto.getStaffId(), dto.getDate(), dto.getStartTime(), dto.getEndTime())) {
+            return ResponseEntity.status(409).build();
+        }
         Booking booking = Booking.builder()
                 .user(user.get())
                 .service(service.get())
@@ -127,5 +134,25 @@ public class BookingController {
         }
         bookingService.deleteById(id);
         return ResponseEntity.noContent().build();
+    }
+
+    @Operation(summary = "Get available time slots for a staff/service/date")
+    @ApiResponses({
+        @ApiResponse(responseCode = "200", description = "List of available time slots returned"),
+        @ApiResponse(responseCode = "400", description = "Invalid input")
+    })
+    @PostMapping("/availability")
+    public ResponseEntity<List<TimeSlot>> getAvailability(@Valid @RequestBody TimeSlotRequestDto req) {
+        Optional<Staff> staff = staffService.findById(req.getStaffId());
+        Optional<Service> service = serviceService.findById(req.getServiceId());
+        if (staff.isEmpty() || service.isEmpty() || !service.get().isActive() || !staff.get().isActive()) {
+            return ResponseEntity.badRequest().build();
+        }
+        int duration = service.get().getDuration();
+        List<LocalTime> starts = bookingService.getAvailability(req.getStaffId(), req.getDate(), duration);
+        List<TimeSlot> slots = starts.stream()
+                .map(s -> new TimeSlot(s, s.plusMinutes(duration)))
+                .collect(Collectors.toList());
+        return ResponseEntity.ok(slots);
     }
 }

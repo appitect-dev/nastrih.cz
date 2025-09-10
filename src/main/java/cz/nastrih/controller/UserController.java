@@ -11,14 +11,17 @@ import org.springframework.web.bind.annotation.*;
 import java.util.List;
 import java.util.Optional;
 import java.util.UUID;
+import org.springframework.security.crypto.password.PasswordEncoder;
 
 @RestController
 @RequestMapping("/api/users")
 public class UserController {
     private final UserService userService;
+    private final PasswordEncoder passwordEncoder;
 
-    public UserController(UserService userService) {
+    public UserController(UserService userService, PasswordEncoder passwordEncoder) {
         this.userService = userService;
+        this.passwordEncoder = passwordEncoder;
     }
 
     @GetMapping
@@ -40,7 +43,7 @@ public class UserController {
         }
         User user = User.builder()
                 .email(dto.getEmail())
-                .password(dto.getPassword()) // In production, hash the password!
+                .password(passwordEncoder.encode(dto.getPassword()))
                 .firstName(dto.getFirstName())
                 .lastName(dto.getLastName())
                 .phone(dto.getPhone())
