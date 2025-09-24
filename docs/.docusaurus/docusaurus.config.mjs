@@ -27,12 +27,12 @@ export default {
       "classic",
       {
         "docs": {
-          "sidebarPath": "/Users/adambardzak/Desktop/business/nastrih.cz/docs/sidebars.js",
+          "sidebarPath": "/Users/vandl/Desktop/git/nastrih.cz/docs/sidebars.js",
           "editUrl": "https://github.com/appitect-dev/nastrih.cz/tree/main/docs/"
         },
         "blog": false,
         "theme": {
-          "customCss": "/Users/adambardzak/Desktop/business/nastrih.cz/docs/src/css/custom.css"
+          "customCss": "/Users/vandl/Desktop/git/nastrih.cz/docs/src/css/custom.css"
         }
       }
     ]

@@ -6,8 +6,9 @@ This is the monorepo for Nastrih.cz, a modern barbershop booking system.
 
 ```
 nastrih.cz/
-├── front/              # Frontend application (Next.js)
-├── back/               # Backend application (coming soon)
+├── front/              # Frontend application (Next.js) - Reservation system
+├── landing/            # Landing page (Next.js) - Marketing website
+├── back/               # Backend application (Spring Boot)
 └── docs/               # Documentation website (Docusaurus)
 ```
 
@@ -39,13 +40,25 @@ Run all projects in development mode:
 npm run dev
 ```
 
+This will start:
+- Frontend (reservation system) at http://localhost:3000
+- Landing page at http://localhost:3001
+- Documentation at http://localhost:3002
+- Backend at http://localhost:8080
+
 Or run specific projects:
 ```bash
-# Frontend only
-npm run dev:front
+# Frontend only (reservation system)
+npm run front
+
+# Landing page only
+npm run landing
 
 # Documentation only
-npm run dev:docs
+npm run docs
+
+# Backend only
+npm run back
 ```
 
 ### Building

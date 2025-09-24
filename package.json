@@ -4,14 +4,16 @@
   "private": true,
   "workspaces": [
     "front",
+    "landing",
     "docs"
   ],
   "scripts": {
     "front": "cd front && npm run dev",
+    "landing": "cd landing && npm run dev",
     "docs": "cd docs && npm run start",
     "back": "cd back && ./mvnw spring-boot:run",
-    "dev": "concurrently \"npm run front\" \"npm run docs\" \"npm run back\" --names \"FRONT,DOCS,BACK\" --prefix-colors \"cyan,yellow,magenta\"",
-    "install:all": "npm install && cd front && npm install && cd ../docs && npm install"
+    "dev": "concurrently \"npm run front\" \"npm run landing\" \"npm run docs\" \"npm run back\" --names \"FRONT,LANDING,DOCS,BACK\" --prefix-colors \"cyan,green,yellow,magenta\"",
+    "install:all": "npm install && cd front && npm install && cd ../landing && npm install && cd ../docs && npm install"
   },
   "devDependencies": {
     "concurrently": "^8.2.2"
